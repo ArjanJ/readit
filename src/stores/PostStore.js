@@ -7,7 +7,8 @@ class PostStore {
 		this.bindActions(PostActions);
 		this.state = {
 			loading: true,
-			posts: {}		}
+			posts: {}		
+		}
 	}
 
 	fetchPosts() {

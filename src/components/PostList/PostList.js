@@ -1,21 +1,23 @@
 import React from 'react';
-import PostActions from '../../actions/PostActions';
-import PostStore from '../../stores/PostStore';
+import { Link } from 'react-router';
+import PostListActions from '../../actions/PostListActions';
+import PostListStore from '../../stores/PostListStore';
+import './PostList.scss';
 
 class PostList extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = PostStore.getState();
+		this.state = PostListStore.getState();
 	}
 
 	componentDidMount() {
-		PostStore.listen(this.onChange.bind(this));
-		PostActions.fetchPosts();
+		PostListStore.listen(this.onChange.bind(this));
+		PostListActions.fetchPosts(this.props.subreddit);
 	}
 
 	componentWillUnmount() {
-		PostStore.unlisten(this.onChange.bind(this));
+		PostListStore.unlisten(this.onChange.bind(this));
 	}
 
 	onChange(state) {
@@ -23,13 +25,14 @@ class PostList extends React.Component {
 	}
 
 	render() {
+		let posts = this.state.posts;
 
 		return (
 			<ul className="PostList">
-				{Object.keys(this.state.posts).map((key) => {
+				{Object.keys(posts).map((key) => {
 					return (
-						<li key={this.state.posts[key].data.id}>
-							{this.state.posts[key].data.title}
+						<li key={posts[key].data.id}>
+							<Link to={posts[key].data.permalink}>{posts[key].data.title}</Link>
 						</li>
 					)
 				})}

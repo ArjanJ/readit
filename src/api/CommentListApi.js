@@ -1,11 +1,11 @@
 import Utils from './Utils';
 
-const PostApi = {
+const CommentListApi = {
 	get: (params) => {
 		let url;
 
-		if (params.subreddit) {
-			url = `https://www.reddit.com${params.subreddit}.json`;
+		if (params.post) {
+			url = `https://www.reddit.com${params.post}/.json`;
 		} else {
 			url = 'https://www.reddit.com/.json';
 		}
@@ -24,4 +24,4 @@ const PostApi = {
 	}
 }
 
-export default PostApi;
+export default CommentListApi;

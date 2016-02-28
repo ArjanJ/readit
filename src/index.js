@@ -1,6 +1,6 @@
-if (module.hot) {
-	module.hot.accept();
-}
+// if (module.hot) {
+// 	module.hot.accept();
+// }
 
 import 'abby';
 import React from 'react';

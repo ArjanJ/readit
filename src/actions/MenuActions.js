@@ -1,7 +1,7 @@
 import alt from '../alt';
 import MenuApi from '../api/MenuApi';
 
-class PostActions {
+class PostListActions {
 
 	fetchMenu() {
 
@@ -23,4 +23,4 @@ class PostActions {
 	}
 }
 
-export default alt.createActions(PostActions);
+export default alt.createActions(PostListActions);

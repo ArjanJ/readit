@@ -17,7 +17,7 @@ class MenuStore {
 
 	fetchMenuSuccess(response) {
 		let menu = response.data.children;
-		console.log(menu);
+
 		this.setState({
 			loading: false,
 			menu: menu 

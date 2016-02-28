@@ -1,13 +1,16 @@
 import React from 'react';
-import { Router, Route, hashHistory, browserHistory } from 'react-router';
+import { Router, Route, IndexRoute, hashHistory, browserHistory } from 'react-router';
 import App from './components/App/App';
-import Post from './components/Post/Post';
+import PostList from './components/PostList/PostList';
+import Thread from './components/Thread/Thread';
 
 const routes = (
 	<Router history={hashHistory}>
-		<Route path="/" component={App} />
-		<Route path="/r/:subreddit" component={App} />
-		<Route path="/r/:subreddit/comments/:id/:title" component={Post} />
+		<Route path="/" component={App}>
+			<IndexRoute component={PostList} />
+			<Route path="r/:subreddit" component={PostList} />
+			<Route path="r/:subreddit/comments/:id/:title" component={Thread} />
+		</Route>
 	</Router>
 )
 

@@ -1,4 +1,4 @@
-const Utils = {
+const utils = {
 	checkStatus: (response) => {
 		if (response.status >= 200 && response.status < 300) {
 		  return response;
@@ -13,4 +13,4 @@ const Utils = {
 	}
 }
 
-export default Utils;
+export default utils;

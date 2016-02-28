@@ -1,19 +1,20 @@
-import Utils from './Utils';
+import utils from './utils';
 
-const PostApi = {
-	get: (params) => {
+const api = {
+
+	getData: (params) => {
 		let url;
 
-		if (params.subreddit) {
-			url = `https://www.reddit.com${params.subreddit}.json`;
+		if (params.url) {
+			url = `https://www.reddit.com${params.url}.json`;
 		} else {
 			url = 'https://www.reddit.com/.json';
 		}
 
 		return new Promise((resolve, response) => {
 			fetch(url)
-				.then(Utils.checkStatus)
-				.then(Utils.parseJSON)
+				.then(utils.checkStatus)
+				.then(utils.parseJSON)
 				.then((response) => {
 					resolve(response);
 				})
@@ -24,4 +25,4 @@ const PostApi = {
 	}
 }
 
-export default PostApi;
+export default api;

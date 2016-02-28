@@ -1,12 +1,12 @@
 import alt from '../alt';
-import PostApi from '../api/PostApi';
+import api from '../api/api';
 
 class PostListActions {
 
 	fetchPosts(subreddit) {
 
 		return new Promise((resolve, response) => {
-			PostApi.get(subreddit)
+			api.getData(subreddit)
 				.then((response) => {
 					this.fetchPostsSuccess(response);
 					resolve(response);

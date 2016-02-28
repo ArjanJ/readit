@@ -1,12 +1,12 @@
 import alt from '../alt';
-import MenuApi from '../api/MenuApi';
+import api from '../api/api';
 
 class PostListActions {
 
 	fetchMenu() {
 
 		return new Promise((resolve, response) => {
-			MenuApi.get()
+			api.getData({ url: '/subreddits/default' })
 				.then((response) => {
 					this.fetchMenuSuccess(response);
 					resolve(response);

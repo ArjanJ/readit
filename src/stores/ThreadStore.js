@@ -1,10 +1,10 @@
 import alt from '../alt';
-import CommentListActions from '../actions/CommentListActions';
+import ThreadActions from '../actions/ThreadActions';
 
-class CommentListStore {
+class ThreadStore {
 
 	constructor() {
-		this.bindActions(CommentListActions);
+		this.bindActions(ThreadActions);
 		this.state = {
 			loading: true,
 			comments: {},
@@ -32,4 +32,4 @@ class CommentListStore {
 	}
 }
 
-export default alt.createStore(CommentListStore, 'CommentListStore');
+export default alt.createStore(ThreadStore, 'ThreadStore');

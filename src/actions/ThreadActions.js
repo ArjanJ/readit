@@ -1,12 +1,12 @@
 import alt from '../alt';
-import CommentListApi from '../api/CommentListApi';
+import api from '../api/api';
 
-class CommentListActions {
+class ThreadActions {
 
 	fetchComments(postPermalink) {
 
 		return new Promise((resolve, response) => {
-			CommentListApi.get(postPermalink)
+			api.getData(postPermalink)
 				.then((response) => {
 					this.fetchCommentsSuccess(response);
 					resolve(response);
@@ -23,4 +23,4 @@ class CommentListActions {
 	}
 }
 
-export default alt.createActions(CommentListActions);
+export default alt.createActions(ThreadActions);

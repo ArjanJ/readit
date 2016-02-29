@@ -8,8 +8,8 @@ const routes = (
 	<Router history={hashHistory}>
 		<Route path="/" component={App}>
 			<IndexRoute component={PostList} />
-			<Route path="r/:subreddit" component={PostList} />
-			<Route path="r/:subreddit/comments/:id/:title" component={Thread} />
+			<Route path="r/:subreddit(/:filter(/:duration))" component={PostList} />
+			<Route path="r/:subreddit/comments/:id/:title(/:filter)" component={Thread} />
 		</Route>
 	</Router>
 )

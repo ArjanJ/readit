@@ -6,9 +6,9 @@ const api = {
 		let url;
 
 		if (params.url) {
-			url = `https://www.reddit.com${params.url}.json`;
+			url = `https://www.reddit.com${params.url}`;
 		} else {
-			url = 'https://www.reddit.com/.json';
+			url = 'https://www.reddit.com/';
 		}
 
 		return new Promise((resolve, response) => {

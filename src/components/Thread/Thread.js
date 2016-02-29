@@ -2,6 +2,8 @@ import React from 'react';
 import ThreadActions from '../../actions/ThreadActions';
 import ThreadStore from '../../stores/ThreadStore';
 import CommentList from '../CommentList/CommentList';
+import Filters from '../Filters/Filters';
+
 
 class Thread extends React.Component {
 
@@ -19,6 +21,10 @@ class Thread extends React.Component {
 		ThreadStore.unlisten(this.onChange.bind(this));
 	}
 
+	componentWillReceiveProps(nextProps) {
+		ThreadActions.fetchComments(this.getCommentListParams(nextProps.params));
+	}
+
 	onChange(state) {
 		this.setState(state);
 	}
@@ -26,8 +32,10 @@ class Thread extends React.Component {
 	getCommentListParams(params) {
 		let obj = {};
 
-		if (params.subreddit && params.title && params.id) {
-			obj.url = `/r/${params.subreddit}/comments/${params.id}/${params.title}`;
+		if (params.subreddit && params.title && params.id && params.filter) {
+			obj.url = `/r/${params.subreddit}/comments/${params.id}/${params.title}/.json?sort=${params.filter}`;
+		} else if (params.subreddit && params.title && params.id) {
+			obj.url = `/r/${params.subreddit}/comments/${params.id}/${params.title}/.json`;
 		} else {
 			console.error('CommentList params undefined.');
 		}
@@ -40,6 +48,7 @@ class Thread extends React.Component {
 		return (
 			<section className="Thread">
 				<h1 className="Thread__title u-heading-4">{this.state.post.title}</h1>
+				<Filters subreddit={`${this.props.params.subreddit}/comments/${this.props.params.id}/${this.props.params.title}`} type="thread" />
 				<CommentList comments={this.state.comments} />
 			</section>
 		)

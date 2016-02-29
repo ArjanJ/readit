@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import PostListActions from '../../actions/PostListActions';
 import PostListStore from '../../stores/PostListStore';
 import PostListItem from '../PostListItem/PostListItem';
+import Filters from '../Filters/Filters';
 import './PostList.scss';
 
 class PostList extends React.Component {
@@ -32,10 +33,14 @@ class PostList extends React.Component {
 	getPostListParams(params) {
 		let obj = {};
 
-		if (params.subreddit) {
-			obj.url = `/r/${params.subreddit}/`;
+		if (params.subreddit && params.filter && params.duration) {
+			obj.url = `/r/${params.subreddit}/${params.filter}/.json?sort=top&t=${params.duration}`;
+		} else if (params.subreddit && params.filter) {
+			obj.url = `/r/${params.subreddit}/${params.filter}/.json`;
+		} else if (params.subreddit) {
+			obj.url = `/r/${params.subreddit}/.json`;
 		} else {
-			obj.url = '/';
+			obj.url = '/.json';
 		}
 
 		return obj;
@@ -51,6 +56,7 @@ class PostList extends React.Component {
 		return (
 			<section className="PostList">
 				<h1 className="PostList__heading">{this.getPostListHeading()}</h1>
+				<Filters type="postList" subreddit={this.props.params.subreddit} />
 				<ul className="PostList__list">
 					{Object.keys(posts).map((key) => {
 						return <PostListItem key={key} item={posts[key]} />

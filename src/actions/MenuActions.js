@@ -6,7 +6,7 @@ class PostListActions {
 	fetchMenu() {
 
 		return new Promise((resolve, response) => {
-			api.getData({ url: '/subreddits/default' })
+			api.getData({ url: '/subreddits/default/.json' })
 				.then((response) => {
 					this.fetchMenuSuccess(response);
 					resolve(response);

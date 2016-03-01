@@ -1,0 +1,12 @@
+.App {
+	display: flex;
+	height: 100vh;
+	overflow: hidden;
+
+	&__content {
+		flex: 1;
+		overflow-y: scroll;
+		position: relative;
+		background: color(light-grey);
+	}
+}

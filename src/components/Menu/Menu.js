@@ -3,8 +3,6 @@ import { Link } from 'react-router';
 import MenuActions from '../../actions/MenuActions';
 import MenuStore from '../../stores/MenuStore';
 
-import './Menu.scss';
-
 class Menu extends React.Component {
 
 	constructor(props) {
@@ -30,11 +28,11 @@ class Menu extends React.Component {
 		
 		return (
 			<nav className="Menu">
-				<Link key={0} to={'/'}>Front</Link>
-				<Link key={1} to={'/r/All'}>All</Link>
+				<Link key={0} to={'/'} className="Menu__link">Front</Link>
+				<Link key={1} to={'/r/All'} className="Menu__link">All</Link>
 				{Object.keys(menu).map((key) => {
 					return (
-						<Link key={menu[key].data.id} to={`/r/${menu[key].data.display_name}`}>{menu[key].data.display_name}</Link>
+						<Link key={menu[key].data.id} to={`/r/${menu[key].data.display_name}`} className="Menu__link">{menu[key].data.display_name}</Link>
 					)
 				})}
 			</nav>

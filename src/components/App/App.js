@@ -6,9 +6,11 @@ class App extends React.Component {
 	render() {
 
 		return (
-			<div>
+			<div className="App">
+				<div className="App__content">
+					{this.props.children}
+				</div>
 				<Menu />
-				{this.props.children}
 			</div>
 		)
 	}

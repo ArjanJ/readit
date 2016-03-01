@@ -4,7 +4,6 @@ import PostListActions from '../../actions/PostListActions';
 import PostListStore from '../../stores/PostListStore';
 import PostListItem from '../PostListItem/PostListItem';
 import Filters from '../Filters/Filters';
-import './PostList.scss';
 
 class PostList extends React.Component {
 
@@ -34,11 +33,13 @@ class PostList extends React.Component {
 		let obj = {};
 
 		if (params.subreddit && params.filter && params.duration) {
-			obj.url = `/r/${params.subreddit}/${params.filter}/.json?sort=top&t=${params.duration}`;
+			obj.url = `/r/${params.subreddit}/${params.filter.toLowerCase()}/.json?sort=top&t=${params.duration.toLowerCase()}`;
 		} else if (params.subreddit && params.filter) {
-			obj.url = `/r/${params.subreddit}/${params.filter}/.json`;
+			obj.url = `/r/${params.subreddit}/${params.filter.toLowerCase()}/.json`;
 		} else if (params.subreddit) {
 			obj.url = `/r/${params.subreddit}/.json`;
+		} else if (params.filter) {
+			obj.url = `/${params.filter}/.json`;
 		} else {
 			obj.url = '/.json';
 		}
@@ -47,7 +48,7 @@ class PostList extends React.Component {
 	}
 
 	getPostListHeading() {
-		return this.props.params.subreddit ? this.props.params.subreddit : 'Front Page';
+		return this.props.params.subreddit ? this.props.params.subreddit : 'Reddit';
 	}
 
 	render() {
@@ -55,13 +56,15 @@ class PostList extends React.Component {
 
 		return (
 			<section className="PostList">
-				<h1 className="PostList__heading">{this.getPostListHeading()}</h1>
-				<Filters type="postList" subreddit={this.props.params.subreddit} />
-				<ul className="PostList__list">
-					{Object.keys(posts).map((key) => {
-						return <PostListItem key={key} item={posts[key]} />
-					})}
-				</ul>
+				<div className="PostList__wrapper">
+					<h1 className="PostList__heading">{this.getPostListHeading()}</h1>
+					<Filters type="postList" subreddit={this.props.params.subreddit} />
+					<ul className="PostList__list">
+						{Object.keys(posts).map((key) => {
+							return <PostListItem key={key} item={posts[key]} />
+						})}
+					</ul>
+				</div>
 			</section>
 		)
 	}

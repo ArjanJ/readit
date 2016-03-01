@@ -1,4 +1,74 @@
 .PostList {
-	list-style-type: none;
-	margin-left: 0;
+	$p: &;
+
+	flex: 1;
+	padding: ($base-space * 2);
+
+	&__wrapper {
+		max-width: 700px;
+		margin: 0 auto;
+	}
+
+	&__heading {
+		margin-top: ($base-space * 2);
+		text-transform: capitalize;
+		letter-spacing: (-$base-space / 5);
+
+		&:first-letter {
+			color: color(red);
+		}
+	}
+
+	&__list {
+		list-style-type: none;
+		margin: 0;
+	}
+
+	&__item {
+		margin-bottom: ($base-space);
+	}
+
+	&__link {
+		display: flex;
+		padding-bottom: $base-space / 2;
+		font-size: map-get($heading-sizes, 5);
+		font-weight: 700;
+		line-height: $line-height-headings;
+		color: color(black);
+
+		&:hover {
+
+			#{$p}__score {
+				opacity: 1;
+			}
+ 		}
+
+ 		&:visited {
+ 			color: color(mid-grey);
+ 		}
+	}
+
+	&__link-text {
+		flex: 1;
+		@include ease();
+	}
+
+	&__score {
+		width: 65px;
+		margin-left: -65px;
+		padding-right: ($base-space);
+		text-align: right;
+		opacity: 0.5;
+		@include ease();
+	}
+
+	&__button {
+		display: inline-block;
+		padding: ($base-space / 6) ($base-space /2 );
+		background: color(light-grey);
+		color: color(black);
+		font-weight: 700;
+		font-size: 75%;
+		border-radius: 3px;
+	}
 }

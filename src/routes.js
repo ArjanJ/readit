@@ -6,10 +6,10 @@ import Thread from './components/Thread/Thread';
 
 const routes = (
 	<Router history={hashHistory}>
-		<Route path="/" component={App}>
+		<Route path="/(:filter)" component={App}>
 			<IndexRoute component={PostList} />
-			<Route path="r/:subreddit(/:filter(/:duration))" component={PostList} />
-			<Route path="r/:subreddit/comments/:id/:title(/:filter)" component={Thread} />
+			<Route path="/r/:subreddit(/:filter(/:duration))" component={PostList} />
+			<Route path="/r/:subreddit/comments/:id/:title(/:filter)" component={Thread} />
 		</Route>
 	</Router>
 )

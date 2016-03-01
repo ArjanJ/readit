@@ -2,7 +2,6 @@ import React from 'react';
 import ThreadActions from '../../actions/ThreadActions';
 import ThreadStore from '../../stores/ThreadStore';
 import CommentListItem from '../CommentListItem/CommentListItem';
-import './CommentList.scss';
 
 class CommentList extends React.Component {
 

@@ -4,8 +4,8 @@ import { Link } from 'react-router';
 class Filters extends React.Component {
 
 	determineFilters(type) {
-		let threadFilters = ['best', 'controversial', 'new', 'old', 'top'];
-		let postListFilters = ['controversial', 'hot', 'new', 'rising', 'top'];
+		let threadFilters = ['Best', 'Controversial', 'New', 'Old', 'Top'];
+		let postListFilters = ['Hot', 'New', 'Top', 'Rising', 'Controversial'];
 
 		if (type === 'thread') {
 			return threadFilters;
@@ -14,13 +14,20 @@ class Filters extends React.Component {
 		}
 	}
 
+	filterButtons(filter, key) {
+		let to = this.props.subreddit ? `/r/${this.props.subreddit}/${filter}` : `/${filter}`;
+
+		const ACTIVE = { color: '#F44336' };
+
+		return <Link key={key} to={to} activeStyle={ACTIVE} className="Filters__button">{filter}</Link>
+	}
+
 	render() {
-		const ACTIVE = { background: 'tomato' };
 		
 		return (
-			<div className="Filter">
+			<div className="Filters">
 				{this.determineFilters(this.props.type).map((filter, i) => {
-					return <Link key={i} to={`/r/${this.props.subreddit}/${filter}`} activeStyle={ACTIVE} className="button">{filter}</Link>
+					return this.filterButtons(filter, i)
 				})}
 			</div>
 		)

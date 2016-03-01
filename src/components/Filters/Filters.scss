@@ -1,0 +1,13 @@
+.Filters {
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: ($base-space);
+
+	&__button {
+		padding: (0) ($base-space / 4);
+		color: color(black);
+		text-transform: capitalize;
+		font-weight: 700;
+	}
+}

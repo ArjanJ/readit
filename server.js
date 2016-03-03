@@ -1,15 +1,16 @@
 'use strict';
 
+const isDeveloping = process.env.NODE_ENV !== 'production';
 const express = require('express');
 const path = require('path');
 
 const webpack = require('webpack');
-const webpackMiddleware = require('webpack-dev-middleware');
-const webpackHotMiddleware = require('webpack-hot-middleware');
-const config = require('./webpack.config.dev.js');
-const compiler = webpack(config);
+const webpackMiddleware = isDeveloping ? require('webpack-dev-middleware') : null;
+const webpackHotMiddleware = isDeveloping ? require('webpack-hot-middleware') : null;
+const config = isDeveloping ? require('./webpack.config.dev.js') : null;
+const compiler = isDeveloping ? webpack(config) : null;
 
-const isDeveloping = process.env.NODE_ENV !== 'production';
+
 const port = isDeveloping ? 8080 : process.env.PORT;
 
 const app = express();

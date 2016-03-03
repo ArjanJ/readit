@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import PostListActions from '../../actions/PostListActions';
 import PostListStore from '../../stores/PostListStore';
 import PostListItem from '../PostListItem/PostListItem';
+import PostListNav from '../PostListNav/PostListNav';
 import Filters from '../Filters/Filters';
 
 class PostList extends React.Component {
@@ -39,7 +40,7 @@ class PostList extends React.Component {
 		} else if (params.subreddit) {
 			obj.url = `/r/${params.subreddit}/.json`;
 		} else if (params.filter) {
-			obj.url = `/${params.filter}/.json`;
+			obj.url = `/${params.filter.toLowerCase()}/.json`;
 		} else {
 			obj.url = '/.json';
 		}
@@ -57,13 +58,16 @@ class PostList extends React.Component {
 		return (
 			<section className="PostList">
 				<div className="PostList__wrapper">
-					<h1 className="PostList__heading">{this.getPostListHeading()}</h1>
-					<Filters type="postList" subreddit={this.props.params.subreddit} />
+					<h1 className="PostList__heading">
+						<Link to={this.props.params.subreddit ? `/r/${this.props.params.subreddit}` : '/'}>{this.getPostListHeading()}</Link>
+					</h1>
+					<Filters className="PostList__filters" type="postList" subreddit={this.props.params.subreddit} />
 					<ul className="PostList__list">
 						{Object.keys(posts).map((key) => {
 							return <PostListItem key={key} item={posts[key]} />
 						})}
 					</ul>
+					<PostListNav subreddit={this.props.params.subreddit} after={posts[posts.length-1]} before={posts[0]} />
 				</div>
 			</section>
 		)

@@ -1,0 +1,12 @@
+.PostListNav {
+
+	&__button {
+		color: color(dark-grey);
+		font-weight: 700;
+		@include ease();
+
+		&:hover {
+			background: darken(color(light-grey), 5);
+		}
+	}
+}

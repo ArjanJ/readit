@@ -25,7 +25,7 @@ class Filters extends React.Component {
 	render() {
 		
 		return (
-			<div className="Filters">
+			<div className={`Filters ${this.props.className}`}>
 				{this.determineFilters(this.props.type).map((filter, i) => {
 					return this.filterButtons(filter, i)
 				})}

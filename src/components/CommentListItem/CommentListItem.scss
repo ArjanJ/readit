@@ -1,0 +1,15 @@
+.CommentListItem {
+	margin: ($base-space / 4) (0) ($base-space / 2);
+
+	&__replies {
+
+	}
+
+	&__meta-info {
+		font-size: 92%;
+	}
+
+	&__author {
+		font-weight: 700;
+	}
+}

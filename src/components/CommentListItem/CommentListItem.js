@@ -1,4 +1,5 @@
 import React from 'react';
+import utils from '../../utils/utils';
 
 class CommentListItem extends React.Component {
 
@@ -10,7 +11,7 @@ class CommentListItem extends React.Component {
 				<ul className="CommentListItem__replies">
 					{Object.keys(replies).map((key) => {
 						if (replies[key].kind === 't1') {
-							return <CommentListItem key={key} text={replies[key].data.body} replies={replies[key].data.replies} />
+							return <CommentListItem key={key} item={replies[key]} replies={replies[key].data.replies} />
 						}
 					})}
 				</ul>
@@ -22,7 +23,10 @@ class CommentListItem extends React.Component {
 
 		return (
 			<li className="CommentListItem">
-				<span className="CommentListItem__text">{this.props.text}</span>
+				<div className="CommentListItem__meta-info">
+					<span className="CommentListItem__author">{this.props.item.data.author}</span> <span className="CommenListItem__time">{utils.timeAgo(this.props.item.data.created_utc)}</span>
+				</div>
+				<span className="CommentListItem__text">{this.props.item.data.body}</span>
 				{this.createReplyList(this.props.replies)}
 			</li>
 		)

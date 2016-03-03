@@ -1,0 +1,59 @@
+.Thread {
+	padding: ($base-space * 3) ($base-space * 2);
+
+	&__wrapper {
+		max-width: 700px;
+		margin: 0 auto;
+	}
+
+	&__headings {
+		display: flex;
+		flex-flow: column-reverse nowrap;
+	}
+
+	&__title {
+		@extend %u-heading-2;
+		letter-spacing: (-$base-space / 8);
+	}
+
+	&__subtitle {
+		@extend %u-heading-4;
+		letter-spacing: (-$base-space / 12);
+		text-transform: capitalize;
+		color: color(black);
+
+		&:first-letter {
+			color: color(red);
+		}
+
+		a { color: inherit; }
+	}
+
+	&__meta-info {
+		margin-bottom: ($base-space);
+	}
+
+	&__author {
+		@extend %u-heading-6;
+		font-weight: 300;
+	}
+
+	&__self-text {
+		margin-bottom: ($base-space * 3);
+		position: relative;
+
+		&:before {
+			content: "";
+			position: absolute;
+			bottom: (-$base-space * 1.5);
+			left: 0;
+			width: 5%;
+			height: 5px;
+			background: color(red);
+		}
+	}
+
+	&__filters {
+		margin: ($base-space * 2) (0) ($base-space);
+	}
+}

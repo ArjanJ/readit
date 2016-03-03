@@ -10,14 +10,16 @@ class CommentList extends React.Component {
 
 		return (
 			<section className="CommentList">
-				<ul className="CommentList__list">
-					{Object.keys(comments).map((key) => {
-						let item = comments[key];
-						let replies = item.data.replies;
-						
-						return <CommentListItem key={key} text={item.data.body} replies={replies} />
-					})}
-				</ul>
+				<div className="CommentList__wrapper">
+					<ul className="CommentList__list">
+						{Object.keys(comments).map((key) => {
+							let item = comments[key];
+							let replies = item.data.replies;
+							
+							return <CommentListItem key={key} item={item} replies={replies} />
+						})}
+					</ul>
+				</div>
 			</section>
 		)
 	}

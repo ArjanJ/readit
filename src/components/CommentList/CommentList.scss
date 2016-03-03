@@ -1,4 +1,18 @@
 .CommentList {
-	list-style-type: none;
-	margin-left: 0;
+	
+	&__wrapper {
+		max-width: 700px;
+		margin: 0 auto;
+	}
+
+	&__list {
+		list-style-type: none;
+		margin-left: 0;
+
+		ul {
+			list-style-type: none;
+			border-left: 2px solid rgba(black, 0.07);
+			padding-left: ($base-space);
+		}
+	}
 }

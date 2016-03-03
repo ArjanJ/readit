@@ -1,13 +1,15 @@
 .Filters {
-	position: absolute;
-	top: 0;
-	left: 0;
-	padding: ($base-space);
+	// margin-bottom: ($base-space * 2);
 
 	&__button {
-		padding: (0) ($base-space / 4);
+		padding: (0) ($base-space / 2) (0) (0);
 		color: color(black);
 		text-transform: capitalize;
 		font-weight: 700;
+		@include ease();
+
+		&:hover {
+			color: color(red);
+		}
 	}
 }

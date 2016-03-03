@@ -5,7 +5,7 @@ import PostList from './components/PostList/PostList';
 import Thread from './components/Thread/Thread';
 
 const routes = (
-	<Router history={hashHistory}>
+	<Router history={browserHistory}>
 		<Route path="/(:filter)" component={App}>
 			<IndexRoute component={PostList} />
 			<Route path="/r/:subreddit(/:filter(/:duration))" component={PostList} />

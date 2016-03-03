@@ -5,9 +5,8 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
 	devtool: 'cheap-eval-source-map',
 	entry: [
-		'webpack-dev-server/client?http://localhost:8080',
-    'webpack/hot/dev-server',
-    './src/index'
+		'webpack-hot-middleware/client?reload=true',
+    path.join(__dirname, 'src/index')
 	],
 	output: {
 		path: path.join(__dirname, 'dist'),
@@ -34,10 +33,7 @@ module.exports = {
 	    include: path.join(__dirname, 'src')
 	  }]
 	},
-	devServer: {
-    contentBase: './dist',
-    hot: true
-  },
+	
   eslint: {
   	configFile: './.eslintrc'
   }

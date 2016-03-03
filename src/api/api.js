@@ -1,4 +1,5 @@
 import utils from './utils';
+import fetchJSONP from 'fetch-jsonp';
 
 const api = {
 
@@ -11,15 +12,22 @@ const api = {
 			url = 'https://www.reddit.com/';
 		}
 
+		let request = new Request(url, {
+			method: 'GET'
+		});
+
 		return new Promise((resolve, response) => {
-			fetch(url)
+			fetch(request)
 				.then(utils.checkStatus)
 				.then(utils.parseJSON)
 				.then((response) => {
 					resolve(response);
 				})
 				.catch((error) => {
-					console.log('request failed', error);
+					console.error(error);
+					if (typeof params !== 'object') {
+						console.error(`getData accepts an object literal only, not a ${typeof params}`);
+					}
 				});
 		});
 	}

@@ -3,10 +3,6 @@ import { Link } from 'react-router';
 
 class PostListItem extends React.Component {
 
-	stringContains(string) {
-
-	}
-
 	render() {
 		let item = this.props.item;
 

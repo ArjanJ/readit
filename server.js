@@ -6,13 +6,15 @@ const path = require('path');
 
 const port = isDeveloping ? 8080 : process.env.PORT;
 
+const webpack = isDeveloping ? require('webpack') : null;
+const webpackMiddleware = isDeveloping ? require('webpack-dev-middleware') : null;
+const webpackHotMiddleware = isDeveloping ? require('webpack-hot-middleware') : null;
+const config = isDeveloping ? require('./webpack.config.dev.js') : null;
+
 const app = express();
 
 if (isDeveloping) {
-	const webpack = require('webpack');
-	const webpackMiddleware = require('webpack-dev-middleware');
-	const webpackHotMiddleware = require('webpack-hot-middleware');
-	const config = require('./webpack.config.dev.js');
+
   const compiler = webpack(config);
   const middleware = webpackMiddleware(compiler, {
     publicPath: config.output.publicPath,

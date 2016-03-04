@@ -12,10 +12,7 @@
   "author": "ArjanJ <hello@arjanjassal.com>",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.13.4",
-    "webpack": "^1.12.14",
-    "webpack-dev-middleware": "^1.5.1",
-    "webpack-hot-middleware": "^2.7.1"
+    "express": "^4.13.4"
   },
   "devDependencies": {
     "abby": "^1.0.3",

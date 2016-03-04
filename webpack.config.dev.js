@@ -9,8 +9,9 @@ module.exports = {
     path.join(__dirname, 'src/index')
 	],
 	output: {
-		path: path.join(__dirname, 'dist'),
-		filename: 'bundle.js'
+		path: path.join(__dirname, '/dist/'),
+		filename: 'bundle.js',
+		publicPath: '/'
 	},
 	plugins: [
 		new webpack.HotModuleReplacementPlugin(),
@@ -30,7 +31,7 @@ module.exports = {
 		}, {
 	    test: /\.js$/,
 	    loaders: ['babel'],
-	    include: path.join(__dirname, 'src')
+	    exclude: /node_modules/
 	  }]
 	},
 	

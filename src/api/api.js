@@ -1,5 +1,4 @@
 import utils from './utils';
-import fetchJSONP from 'fetch-jsonp';
 
 const api = {
 

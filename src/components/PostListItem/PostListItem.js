@@ -12,10 +12,10 @@ class PostListItem extends React.Component {
 
 		return (
 			<li key={item.data.id} className="PostList__item">
-				<a href={item.data.url.indexOf('reddit.com') > -1 ? `#${item.data.permalink}` : item.data.url} className="PostList__link" target={item.data.url.indexOf('reddit.com') > -1 ? '_self' : '_blank'}>
+				<Link to={item.data.url.indexOf('reddit.com') > -1 ? `${item.data.permalink}` : item.data.url} className="PostList__link" target={item.data.url.indexOf('reddit.com') > -1 ? undefined : '_blank'}>
 					<span className="PostList__score">{item.data.score}</span>
 					<span className="PostList__link-text">{item.data.title}</span>
-				</a>
+				</Link>
 				<Link to={item.data.permalink} className="PostList__button">View comments</Link>
 			</li>
 		)

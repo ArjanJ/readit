@@ -4,10 +4,11 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
 	devtool: 'source-map',
-	entry: ['./src/index'],
+	entry: [path.join(__dirname, 'src/index')],
 	output: {
-		path: path.join(__dirname, 'dist'),
-		filename: 'bundle.js'
+		path: path.join(__dirname, '/dist/'),
+		filename: 'bundle.js',
+		publicPath: '/'
 	},
 	plugins: [
 		new webpack.optimize.UglifyJsPlugin({

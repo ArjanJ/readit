@@ -15,7 +15,7 @@ const app = express();
 
 if (isDeveloping) {
 
-  const compiler = webpack(config);
+  const compiler = isDeveloping ? webpack(config) : null;
   const middleware = webpackMiddleware(compiler, {
     publicPath: config.output.publicPath,
     contentBase: 'src',

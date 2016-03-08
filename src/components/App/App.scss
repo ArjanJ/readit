@@ -11,8 +11,22 @@
 	}
 
 	&__aside {
-		width: 300px;
+		width: 230px;
 		padding: ($base-space) ($base-space * 2);
 		overflow-y: scroll;
+	}
+
+	@include bp(medium) {
+
+		&__aside {
+			width: 250px;
+		}
+	}
+
+	@include bp(large) {
+
+		&__aside {
+			width: 300px;
+		}
 	}
 }

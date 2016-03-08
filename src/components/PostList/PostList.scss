@@ -60,15 +60,14 @@
 
 	&__score {
 		width: 65px;
-		margin-left: -65px;
 		padding-right: ($base-space);
 		text-align: right;
-		opacity: 0.5;
 		@include ease();
 	}
 
 	&__button {
 		display: inline-block;
+		margin-left: 65px;
 		padding: ($base-space / 6) ($base-space /2 );
 		background: color(light-grey);
 		color: color(black);

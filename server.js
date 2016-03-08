@@ -13,6 +13,7 @@ const isDeveloping    = process.env.NODE_ENV !== 'production';
 
 const REDDIT_CONSUMER_KEY     = "_xJE2XUB4F0OoQ";
 const REDDIT_CONSUMER_SECRET  = "PXkb5mo3iDpxtZAoh681AaKzRMo";
+const REDDIT_CALLBACK_URL = isDeveloping ? 'http://localhost:8080' : 'https://fierce-fortress-81623.herokuapp.com';
 
 const port = isDeveloping ? 8080 : process.env.PORT;
 
@@ -40,7 +41,7 @@ passport.deserializeUser(function(obj, done) {
 passport.use(new RedditStrategy({
 	clientID: REDDIT_CONSUMER_KEY,
 	clientSecret: REDDIT_CONSUMER_SECRET,
-	callbackURL: "https://fierce-fortress-81623.herokuapp.com/auth/reddit/callback"
+	callbackURL: REDDIT_CALLBACK_URL + "/auth/reddit/callback"
 }, function(accessToken, refreshToken, profile, done) {
 	process.nextTick(function () {
 		return done(null, profile);

@@ -40,7 +40,7 @@ passport.deserializeUser(function(obj, done) {
 passport.use(new RedditStrategy({
 	clientID: REDDIT_CONSUMER_KEY,
 	clientSecret: REDDIT_CONSUMER_SECRET,
-	callbackURL: "http://localhost:8080/auth/reddit/callback"
+	callbackURL: "https://fierce-fortress-81623.herokuapp.com/auth/reddit/callback"
 }, function(accessToken, refreshToken, profile, done) {
 	process.nextTick(function () {
 		return done(null, profile);

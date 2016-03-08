@@ -1,4 +1,4 @@
-@import "../node_modules/abby/src/abby.scss";
+@import "./components/abby/abby.scss";
 
 @import "./components/App/App.scss";
 @import "./components/PostList/PostList.scss";
@@ -8,3 +8,5 @@
 @import "./components/Thread/Thread.scss";
 @import "./components/Filters/Filters.scss";
 @import "./components/PostListNav/PostListNav.scss";
+@import "./components/SubredditSearch/SubredditSearch.scss";
+@import "./components/Login/Login.scss";

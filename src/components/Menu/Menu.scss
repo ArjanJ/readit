@@ -1,13 +1,9 @@
 .Menu {
-	width: 300px;
-	padding: ($base-space) ($base-space * 2);
-	overflow-y: scroll;
 	
 	&__link {
 		display: block;
 		padding: ($base-space / 4) (0);
 		font-weight: 700;
-		font-size: map-get($heading-sizes, 6);
 		text-transform: capitalize;
 		color: color(black);
 	}

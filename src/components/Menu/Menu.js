@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import MenuActions from '../../actions/MenuActions';
 import MenuStore from '../../stores/MenuStore';
+import SubredditSearch from '../SubredditSearch/SubredditSearch';
 
 class Menu extends React.Component {
 
@@ -27,15 +28,18 @@ class Menu extends React.Component {
 		let menu = this.state.menu;
 		
 		return (
-			<nav className="Menu">
-				<Link key={0} to={'/'} className="Menu__link">Front</Link>
-				<Link key={1} to={'/r/All'} className="Menu__link">All</Link>
-				{Object.keys(menu).map((key) => {
-					return (
-						<Link key={menu[key].data.id} to={`/r/${menu[key].data.display_name}`} className="Menu__link">{menu[key].data.display_name}</Link>
-					)
-				})}
-			</nav>
+			<div>
+				<SubredditSearch />
+				<nav className="Menu">
+					<Link key={0} to={'/'} className="Menu__link">Front</Link>
+					<Link key={1} to={'/r/All'} className="Menu__link">All</Link>
+					{Object.keys(menu).map((key) => {
+						return (
+							<Link key={menu[key].data.id} to={`/r/${menu[key].data.display_name}`} className="Menu__link">{menu[key].data.display_name}</Link>
+						)
+					})}
+				</nav>
+			</div>
 		)
 	}
 }

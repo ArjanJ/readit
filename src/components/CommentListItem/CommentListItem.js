@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
 import utils from '../../utils/utils';
 
 class CommentListItem extends React.Component {
@@ -26,7 +27,10 @@ class CommentListItem extends React.Component {
 				<div className="CommentListItem__meta-info">
 					<span className="CommentListItem__author">{this.props.item.data.author}</span> <span className="CommenListItem__time">{utils.timeAgo(this.props.item.data.created_utc)}</span>
 				</div>
-				<span className="CommentListItem__text">{this.props.item.data.body}</span>
+
+				<div className="CommentListItem__text">
+					<ReactMarkdown source={this.props.item.data.body} />
+				</div>
 				{this.createReplyList(this.props.replies)}
 			</li>
 		)

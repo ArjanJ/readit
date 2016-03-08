@@ -1,5 +1,6 @@
 import React from 'react';
 import Menu from '../Menu/Menu';
+import Login from '../Login/Login';
 
 class App extends React.Component {
 
@@ -8,9 +9,12 @@ class App extends React.Component {
 		return (
 			<div className="App">
 				<div className="App__content">
+					<Login />
 					{this.props.children}
 				</div>
-				<Menu />
+				<div className="App__aside">
+					<Menu />
+				</div>
 			</div>
 		)
 	}

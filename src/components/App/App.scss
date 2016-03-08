@@ -9,4 +9,10 @@
 		position: relative;
 		background: color(white);
 	}
+
+	&__aside {
+		width: 300px;
+		padding: ($base-space) ($base-space * 2);
+		overflow-y: scroll;
+	}
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
 import { Link } from 'react-router';
 import ThreadActions from '../../actions/ThreadActions';
 import ThreadStore from '../../stores/ThreadStore';
@@ -49,7 +50,7 @@ class Thread extends React.Component {
 		if (this.state.post.selftext) {
 			return (
 				<div className="Thread__self-text">
-					{this.state.post.selftext}
+					<ReactMarkdown source={this.state.post.selftext} />
 				</div>
 			)
 		} else {

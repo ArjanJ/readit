@@ -1,6 +1,7 @@
 import React from 'react';
 import Menu from '../Menu/Menu';
 import Login from '../Login/Login';
+import Hamburger from '../Hamburger/Hamburger';
 
 class App extends React.Component {
 
@@ -15,6 +16,7 @@ class App extends React.Component {
 				<div className="App__aside">
 					<Menu />
 				</div>
+				<Hamburger />
 			</div>
 		)
 	}

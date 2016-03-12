@@ -1,10 +1,14 @@
 .Menu {
-	
+
 	&__link {
 		display: block;
 		padding: ($base-space / 4) (0);
 		font-weight: 700;
 		text-transform: capitalize;
 		color: color(black);
+
+		&:hover {
+			color: color(red);
+		}
 	}
 }

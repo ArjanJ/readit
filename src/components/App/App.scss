@@ -2,6 +2,7 @@
 	display: flex;
 	height: 100vh;
 	overflow: hidden;
+	background: color(white);
 
 	&__content {
 		flex: 1;
@@ -11,15 +12,32 @@
 	}
 
 	&__aside {
-		width: 230px;
+		position: fixed;
+		top: 0;
+		right: 0;
+		height: 100%;
+		width: 100%;
 		padding: ($base-space) ($base-space * 2);
 		overflow-y: scroll;
+		background: white;
+		@include ease();
+		will-change: transform;
+
+		// Hide on mobile
+		transform: translate3d(100%, 0, 0);
+
+		&--active {
+			transform: translate3d(0, 0, 0);
+		}
 	}
 
 	@include bp(medium) {
 
 		&__aside {
+			position: static;
+			height: auto;
 			width: 250px;
+			transform: none;
 		}
 	}
 

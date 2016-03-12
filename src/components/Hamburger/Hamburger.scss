@@ -1,0 +1,23 @@
+.Hamburger {
+	position: fixed;
+	top: ($base-space);
+	right: ($base-space);
+	width: ($base-space * 2);
+	padding: ($base-space / 2);
+
+	&__patty {
+		display: block;
+		width: 100%;
+		height: 3px;
+		margin-bottom: 3px;
+		background: color(black);
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	@include bp(medium) {
+		display: none;
+	}
+}

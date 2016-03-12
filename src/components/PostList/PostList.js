@@ -66,7 +66,10 @@ class PostList extends React.Component {
 
 	noPostsElement() {
 		return (
-			<h2>Sorry, we couldn't find anything here!</h2>
+			<div>
+				<h2>Sorry, we couldn't find anything here!</h2>
+				<p>Either that subreddit doesn't exist or Reddit's servers are busy right now. Please refresh the page in a minute.</p>
+			</div>
 		)
 	}
 

@@ -8,9 +8,12 @@ const path            = require('path');
 const passport        = require('passport');
 const crypto          = require('crypto');
 const RedditStrategy  = require('passport-reddit').Strategy;
-const creds 					= require('./creds');
 
 const isDeveloping    = process.env.NODE_ENV !== 'production';
+
+if (isDeveloping) {
+	const creds = require('./creds');
+}
 
 const REDDIT_CONSUMER_KEY     = isDeveloping ? creds.key : process.env.REDDIT_CONSUMER_KEY;
 const REDDIT_CONSUMER_SECRET  = isDeveloping ? creds.secret : process.env.REDDIT_CONSUMER_SECRET;

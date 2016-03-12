@@ -10,9 +10,9 @@ const crypto          = require('crypto');
 const RedditStrategy  = require('passport-reddit').Strategy;
 
 const isDeveloping    = process.env.NODE_ENV !== 'production';
-
+let creds;
 if (isDeveloping) {
-	const creds = require('./creds');
+	creds = require('./creds');
 }
 
 const REDDIT_CONSUMER_KEY     = isDeveloping ? creds.key : process.env.REDDIT_CONSUMER_KEY;

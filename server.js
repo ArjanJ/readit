@@ -12,8 +12,8 @@ const creds 					= require('./creds');
 
 const isDeveloping    = process.env.NODE_ENV !== 'production';
 
-const REDDIT_CONSUMER_KEY     = creds.key;
-const REDDIT_CONSUMER_SECRET  = creds.secret;
+const REDDIT_CONSUMER_KEY     = isDeveloping ? creds.key : process.env.REDDIT_CONSUMER_KEY;
+const REDDIT_CONSUMER_SECRET  = isDeveloping ? creds.secret : process.env.REDDIT_CONSUMER_SECRET;
 const REDDIT_CALLBACK_URL = isDeveloping ? 'http://localhost:8080' : 'https://fierce-fortress-81623.herokuapp.com';
 
 const port = isDeveloping ? 8080 : process.env.PORT;

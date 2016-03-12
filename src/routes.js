@@ -3,6 +3,7 @@ import { Router, Route, IndexRoute, hashHistory, browserHistory } from 'react-ro
 import App from './components/App/App';
 import PostList from './components/PostList/PostList';
 import Thread from './components/Thread/Thread';
+import utils from './utils/utils';
 
 const routes = (
 	<Router history={browserHistory}>

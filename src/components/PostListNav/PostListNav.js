@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import PostListActions from '../../actions/PostListActions';
+import utils from '../../utils/utils';
 
 class PostListNav extends React.Component {
 
@@ -17,17 +18,18 @@ class PostListNav extends React.Component {
 
 	componentWillUpdate(nextProps, nextState) {
 		if (nextState.when === 'after' && nextState.count.after !== this.state.count.after) {
-			this.callAction(nextState.count.after, 'after', this.props.after.data.name);
+			this.fetchNewPosts(nextState.count.after, 'after', this.props.after.data.name);
 		}
 
 		if (nextState.when === 'before' && nextState.count.before !== this.state.count.before) {
-			this.callAction(nextState.count.before, 'before', this.props.before.data.name);
-
+			this.fetchNewPosts(nextState.count.before, 'before', this.props.before.data.name);
 		}
+
+		utils.scrollTop('.App__content', 0);
 	}
 
 	button(text, onclick) {
-		return <button type="button" className="PostListNav__button" disabled={this.isDisabled(text)} onClick={onclick}>{text}</button>
+		return <button type="button" className="PostListNav__button" onClick={onclick}>{text}</button>
 	}
 
 	updateCountNext() {
@@ -67,16 +69,11 @@ class PostListNav extends React.Component {
 		}
 	}
 
-	callAction(count, when, postName) {
+	fetchNewPosts(count, when, postName) {
 		let subreddit = this.props.subreddit ? `/r/${this.props.subreddit}/` : '/';
 		let url = `${subreddit}.json?count=${count}&${when}=${postName}`;
 
 		PostListActions.fetchPosts({ url: url });
-	}
-
-	isDisabled(button) {
-		// if (button === 'Prev' && this.state.count.before <= 26 || button === 'Prev' && this.state.count.after >= 25) return true; 
-		// console.log(this.props.before);
 	}
 
 	render() {

@@ -8,7 +8,7 @@ class PostListActions {
 		return new Promise((resolve, response) => {
 			api.getData(subreddit)
 				.then((response) => {
-					this.fetchPostsSuccess(response);
+					response !== null ? this.fetchPostsSuccess(response) : this.fetchPostsFailed(response);
 					resolve(response);
 				});
 			});

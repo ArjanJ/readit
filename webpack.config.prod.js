@@ -19,6 +19,9 @@ module.exports = {
 		new webpack.optimize.OccurenceOrderPlugin(),
 		new HtmlWebpackPlugin({
       template: './src/index.html'
+    }),
+    new webpack.ProvidePlugin({
+      'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
     })
 	],
 	module: {

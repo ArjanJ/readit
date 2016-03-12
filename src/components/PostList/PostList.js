@@ -5,6 +5,7 @@ import PostListStore from '../../stores/PostListStore';
 import PostListItem from '../PostListItem/PostListItem';
 import PostListNav from '../PostListNav/PostListNav';
 import Filters from '../Filters/Filters';
+import utils from '../../utils/utils';
 
 class PostList extends React.Component {
 
@@ -24,6 +25,7 @@ class PostList extends React.Component {
 
 	componentWillReceiveProps(nextProps) {
 		PostListActions.fetchPosts(this.getPostListParams(nextProps.params));
+		utils.scrollTop('.App__content', 0);
 	}
 
 	onChange(state) {
@@ -52,6 +54,22 @@ class PostList extends React.Component {
 		return this.props.params.subreddit ? this.props.params.subreddit : 'Reddit';
 	}
 
+	postListElement(posts) {
+		return (
+			<ul className="PostList__list">
+				{Object.keys(posts).map((key) => {
+					return <PostListItem key={key} item={posts[key]} />
+				})}
+			</ul>
+		)
+	}
+
+	noPostsElement() {
+		return (
+			<h2>Sorry, we couldn't find anything here!</h2>
+		)
+	}
+
 	render() {
 		let posts = this.state.posts;
 
@@ -62,12 +80,11 @@ class PostList extends React.Component {
 						<Link to={this.props.params.subreddit ? `/r/${this.props.params.subreddit}` : '/'}>{this.getPostListHeading()}</Link>
 					</h1>
 					<Filters className="PostList__filters" type="postList" subreddit={this.props.params.subreddit} />
-					<ul className="PostList__list">
-						{Object.keys(posts).map((key) => {
-							return <PostListItem key={key} item={posts[key]} />
-						})}
-					</ul>
-					<PostListNav subreddit={this.props.params.subreddit} after={posts[posts.length-1]} before={posts[0]} />
+
+					{ this.state.posts ? this.postListElement(this.state.posts) : this.noPostsElement() }
+
+					{this.state.posts ? <PostListNav subreddit={this.props.params.subreddit} after={posts && posts[posts.length-1]} before={posts && posts[0]} /> : null}
+					
 				</div>
 			</section>
 		)

@@ -25,7 +25,11 @@ class PostListStore {
 	}
 
 	fetchPostsFailed(response) {
-		console.log(response);
+		
+		this.setState({
+			loading: false,
+			posts: null
+		});
 	}
 }
 

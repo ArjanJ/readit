@@ -95,12 +95,12 @@ if (!(isDeveloping)) {
 }
 
 if (isDeveloping) {
-	const webpack = require('webpack');
-	const webpackMiddleware = require('webpack-dev-middleware');
-	const webpackHotMiddleware = require('webpack-hot-middleware');
-	const config = require('./webpack.config.dev.js');
+	const webpack 							= require('webpack');
+	const webpackMiddleware 		= require('webpack-dev-middleware');
+	const webpackHotMiddleware 	= require('webpack-hot-middleware');
+	const config 								= require('./webpack.config.dev.js');
+	const compiler 							= webpack(config);
 
-	const compiler = webpack(config);
 	const middleware = webpackMiddleware(compiler, {
 		publicPath: config.output.publicPath,
 		contentBase: 'src',

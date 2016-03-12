@@ -2,8 +2,13 @@ import React from 'react';
 import ThreadActions from '../../actions/ThreadActions';
 import ThreadStore from '../../stores/ThreadStore';
 import CommentListItem from '../CommentListItem/CommentListItem';
+import utils from '../../utils/utils';
 
 class CommentList extends React.Component {
+
+	componentDidMount() {
+		utils.scrollTop('.App__content', 0)
+	}
 
 	render() {
 		let comments = this.props.comments;

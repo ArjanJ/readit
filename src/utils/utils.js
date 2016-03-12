@@ -34,7 +34,16 @@ const utils = {
         return interval + ' minutes ago';
     }
     return Math.floor(seconds) + ' seconds ago';
-	}
+	},
+
+  scrollTop: (element, value) => {
+    if (element && value >= 0) {
+      let el = document.querySelector(element);
+      if (el) {
+        el.scrollTop = value;
+      }
+    }
+  }
 };
 
 export default utils;

@@ -24,9 +24,12 @@ const api = {
 				})
 				.catch((error) => {
 					console.error(error);
+					
 					if (typeof params !== 'object') {
 						console.error(`getData accepts an object literal only, not a ${typeof params}`);
 					}
+
+					resolve(null);
 				});
 		});
 	}

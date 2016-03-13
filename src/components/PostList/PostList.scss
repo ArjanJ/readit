@@ -90,7 +90,7 @@
 
 	&__button {
 		display: inline-block;
-		margin-left: 65px;
+		margin-left: 50px;
 		padding: ($base-space / 6) ($base-space /2 );
 		background: color(light-grey);
 		color: color(black);
@@ -101,6 +101,10 @@
 
 		&:hover {
 			background: darken(color(light-grey), 5);
+		}
+
+		@include bp(medium) {
+			margin-left: 65px;
 		}
 	}
 

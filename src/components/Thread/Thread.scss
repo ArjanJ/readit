@@ -18,13 +18,18 @@
 	}
 
 	&__title {
-		@extend %u-heading-2;
-		letter-spacing: (-$base-space / 8);
+		@extend %u-heading-3;
+		letter-spacing: (-$base-space / 10);
+
+		@include bp(medium) {
+			@extend %u-heading-2;
+			letter-spacing: (-$base-space / 8);
+		}
 	}
 
 	&__subtitle {
-		@extend %u-heading-4;
-		letter-spacing: (-$base-space / 12);
+		@extend %u-heading-5;
+		letter-spacing: (-$base-space / 14);
 		text-transform: capitalize;
 		color: color(black);
 
@@ -33,6 +38,11 @@
 		}
 
 		a { color: inherit; }
+
+		@include bp(medium) {
+			@extend %u-heading-4;
+			letter-spacing: (-$base-space / 12);
+		}
 	}
 
 	&__meta-info {

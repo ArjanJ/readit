@@ -36,11 +36,31 @@ const utils = {
     return Math.floor(seconds) + ' seconds ago';
 	},
 
+  replaceChar: (str, target, replacement) => {
+    let len = str.length;
+    let charArr = [];
+    
+    for (let i = 0; i < len; i++) {
+      charArr.push(str[i]);
+    }
+    
+    let newCharArr = charArr.map((x) => {
+      return x === target ? replacement : x;
+    }).join('');
+    
+    return newCharArr;
+  },
+
   scrollTop: (element, value) => {
     if (element && value >= 0) {
       let el = document.querySelector(element);
       if (el) el.scrollTop = value;
     }
+  },
+
+  toTitleCase: (str) => {
+    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+
   }
 };
 

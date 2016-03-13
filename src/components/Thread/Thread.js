@@ -18,6 +18,13 @@ class Thread extends React.Component {
 	componentDidMount() {
 		ThreadStore.listen(this.onChange.bind(this));
 		ThreadActions.fetchComments(this.getCommentListParams(this.props.params));
+
+		let title = utils.replaceChar(this.props.params.title, '_', ' ');
+		title = utils.toTitleCase(title);
+
+		let subreddit = utils.toTitleCase(this.props.params.subreddit);
+
+		document.title = `${title} - ${subreddit}`;
 	}
 
 	componentWillUnmount() {

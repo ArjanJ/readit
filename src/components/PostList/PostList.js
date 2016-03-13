@@ -18,6 +18,9 @@ class PostList extends React.Component {
 	componentDidMount() {
 		PostListStore.listen(this.onChange.bind(this));
 		PostListActions.fetchPosts(this.getPostListParams(this.props.params));
+
+		let title = utils.toTitleCase(this.props.params.subreddit);
+		document.title = `${title} - Readit`;
 	}
 
 	componentWillUnmount() {
@@ -34,6 +37,9 @@ class PostList extends React.Component {
 
 		// Scroll to top of the page
 		utils.scrollTop('.App__content', 0);
+
+		let title = utils.toTitleCase(nextProps.params.subreddit);
+		document.title = `${title} - Readit`;
 	}
 
 	onChange(state) {

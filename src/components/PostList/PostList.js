@@ -84,18 +84,21 @@ class PostList extends React.Component {
 	render() {
 		let posts = this.state.posts;
 
+		let postListClassName = 'PostList';
+		
+		if (this.state.loading) postListClassName += ' PostList--loading';
+
 		return (
-			<section className="PostList">
+			<section className={postListClassName}>
 				<div className="PostList__wrapper">
 					<h1 className="PostList__heading">
-						<Link to={this.props.params.subreddit ? `/r/${this.props.params.subreddit}` : '/'}>{this.getPostListHeading()}</Link>
+						<Link to={this.props.params.subreddit ? `/r/${this.props.params.subreddit}` : '/'}>{this.state.subreddit}</Link>
 					</h1>
 					<Filters className="PostList__filters" type="postList" subreddit={this.props.params.subreddit} />
 
 					{ this.state.posts ? this.postListElement(this.state.posts) : this.noPostsElement() }
 
 					{this.state.posts ? <PostListNav subreddit={this.props.params.subreddit} after={posts && posts[posts.length-1]} before={posts && posts[0]} /> : null}
-					
 				</div>
 			</section>
 		)

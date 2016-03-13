@@ -59,8 +59,12 @@ class Thread extends React.Component {
 	}
 
 	render() {
+		let threadClassName = 'Thread';
+		
+		if (this.state.loading) threadClassName += ' Thread--loading';
+
 		return (
-			<section className="Thread">
+			<section className={threadClassName}>
 				<article className="Thread__wrapper">
 					<div className="Thread__headings">
 						<h1 className="Thread__title">{this.state.post.title}</h1>

@@ -5,13 +5,19 @@ class PostListActions {
 
 	fetchPosts(subreddit) {
 
-		return new Promise((resolve, response) => {
-			api.getData(subreddit)
-				.then((response) => {
-					response !== null ? this.fetchPostsSuccess(response) : this.fetchPostsFailed(response);
-					resolve(response);
+		return (dispatch) => {
+			dispatch();
+
+			return new Promise((resolve, response) => {
+				api.getData(subreddit)
+					.then((response) => {
+						response !== null ? this.fetchPostsSuccess(response) : this.fetchPostsFailed(response);
+						resolve(response);
+						return response;
+					});
 				});
-			});
+		}
+		
 	}
 
 	fetchPostsSuccess(response) {

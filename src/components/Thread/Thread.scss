@@ -1,5 +1,11 @@
 .Thread {
 	padding: ($base-space * 3) ($base-space * 2);
+	opacity: 1;
+	@include ease();
+
+	&--loading {
+		opacity: 0;
+	}
 
 	&__wrapper {
 		max-width: 700px;

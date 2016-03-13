@@ -5,13 +5,19 @@ class ThreadActions {
 
 	fetchComments(postPermalink) {
 
-		return new Promise((resolve, response) => {
-			api.getData(postPermalink)
-				.then((response) => {
-					this.fetchCommentsSuccess(response);
-					resolve(response);
-				});
-		});
+		return (dispatch) => {
+			dispatch();
+			return new Promise((resolve, response) => {
+				api.getData(postPermalink)
+					.then((response) => {
+						this.fetchCommentsSuccess(response);
+						resolve(response);
+						return response;
+					});
+			});
+		}
+
+		
 	}
 
 	fetchCommentsSuccess(response) {

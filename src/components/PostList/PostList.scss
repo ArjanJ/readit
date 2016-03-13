@@ -2,7 +2,21 @@
 	$p: &;
 
 	flex: 1;
-	padding: ($base-space * 3) ($base-space * 2);
+	padding: ($base-space * 2) ($base-space);
+	opacity: 1;
+	@include ease();
+
+	@include bp(medium) {
+		padding: ($base-space * 3) ($base-space * 2);
+	}
+
+	&--loading {
+		opacity: 0;
+	}
+
+	&--loaded {
+		opacity: 1;
+	}
 
 	&__wrapper {
 		max-width: 700px;
@@ -35,7 +49,7 @@
 	&__link {
 		display: flex;
 		padding-bottom: ($base-space / 3);
-		font-size: map-get($heading-sizes, 5);
+		font-size: map-get($heading-sizes, 6);
 		font-weight: 700;
 		line-height: $line-height-headings;
 		color: color(black);
@@ -51,6 +65,10 @@
  			color: color(mid-grey);
  			text-decoration: line-through;
  		}
+
+ 		@include bp(medium) {
+ 			font-size: map-get($heading-sizes, 5);
+ 		}
 	}
 
 	&__link-text {
@@ -59,10 +77,15 @@
 	}
 
 	&__score {
-		width: 65px;
-		padding-right: ($base-space);
+		width: 50px;
+		padding-right: ($base-space / 2);
 		text-align: right;
 		@include ease();
+
+		@include bp(medium) {
+			width: 65px;
+			padding-right: ($base-space);
+		}
 	}
 
 	&__button {

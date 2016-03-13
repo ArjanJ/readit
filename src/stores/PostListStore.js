@@ -7,7 +7,8 @@ class PostListStore {
 		this.bindActions(PostListActions);
 		this.state = {
 			loading: true,
-			posts: {}		
+			posts: {},
+			subreddit: ''
 		}
 	}
 
@@ -20,7 +21,8 @@ class PostListStore {
 
 		this.setState({
 			loading: false,
-			posts: posts 
+			posts: posts,
+			subreddit: posts[0].data.subreddit
 		});
 	}
 

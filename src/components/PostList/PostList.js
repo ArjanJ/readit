@@ -19,8 +19,9 @@ class PostList extends React.Component {
 		PostListStore.listen(this.onChange.bind(this));
 		PostListActions.fetchPosts(this.getPostListParams(this.props.params));
 
+		// Set page title
 		let title = utils.toTitleCase(this.props.params.subreddit);
-		document.title = `${title} - Readit`;
+		document.title = title ? `${title} - Readit` : 'Readit - A Reddit Reader';
 	}
 
 	componentWillUnmount() {
@@ -38,8 +39,9 @@ class PostList extends React.Component {
 		// Scroll to top of the page
 		utils.scrollTop('.App__content', 0);
 
+		// Set page title
 		let title = utils.toTitleCase(nextProps.params.subreddit);
-		document.title = `${title} - Readit`;
+		document.title = title ? `${title} - Readit` : 'Readit - A Reddit Reader';
 	}
 
 	onChange(state) {
@@ -65,7 +67,7 @@ class PostList extends React.Component {
 	}
 
 	getPostListHeading() {
-		return this.props.params.subreddit ? this.props.params.subreddit : 'Reddit';
+			return this.props.params.subreddit ? this.props.params.subreddit : 'Reddit';
 	}
 
 	postListElement(posts) {
@@ -98,7 +100,7 @@ class PostList extends React.Component {
 			<section className={postListClassName}>
 				<div className="PostList__wrapper">
 					<h1 className="PostList__heading">
-						<Link to={this.props.params.subreddit ? `/r/${this.props.params.subreddit}` : '/'}>{this.state.subreddit}</Link>
+						<Link to={this.props.params.subreddit ? `/r/${this.props.params.subreddit}` : '/'}>{this.getPostListHeading()}</Link>
 					</h1>
 					<Filters className="PostList__filters" type="postList" subreddit={this.props.params.subreddit} />
 

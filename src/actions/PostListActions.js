@@ -15,7 +15,7 @@ class PostListActions {
 						resolve(response);
 						return response;
 					});
-				});
+			});
 		}
 		
 	}

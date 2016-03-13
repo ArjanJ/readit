@@ -7,6 +7,7 @@ class ThreadActions {
 
 		return (dispatch) => {
 			dispatch();
+			
 			return new Promise((resolve, response) => {
 				api.getData(postPermalink)
 					.then((response) => {

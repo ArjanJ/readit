@@ -5,13 +5,17 @@ class PostListActions {
 
 	fetchMenu() {
 
-		return new Promise((resolve, response) => {
-			api.getData({ url: '/subreddits/default/.json' })
-				.then((response) => {
-					response !== null ? this.fetchMenuSuccess(response) : this.fetchMenuFailed(response);
-					resolve(response);
-				});
+		return (dispatch) => {
+			dispatch();
+
+			return new Promise((resolve, response) => {
+				api.getData({ url: '/subreddits/default/.json' })
+					.then((response) => {
+						response !== null ? this.fetchMenuSuccess(response) : this.fetchMenuFailed(response);
+						resolve(response);
+					});
 			});
+		}
 	}
 
 	fetchMenuSuccess(response) {

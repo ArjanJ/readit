@@ -1,10 +1,10 @@
 import React from 'react';
+import MenuActions from '../../actions/MenuActions';
 
 class Hamburger extends React.Component {
 
 	toggleSidebar() {
-		let sidebar = document.querySelector('.App__aside');
-		if (sidebar) sidebar.classList.toggle('App__aside--active');
+		MenuActions.toggleMenu();
 	}
 
 	render() {

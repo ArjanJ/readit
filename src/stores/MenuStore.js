@@ -7,7 +7,8 @@ class MenuStore {
 		this.bindActions(MenuActions);
 		this.state = {
 			loading: true,
-			menu: {}		
+			menu: {},
+			active: false	
 		}
 	}
 
@@ -26,6 +27,12 @@ class MenuStore {
 
 	fetchMenuFailed(response) {
 		console.log(response);
+	}
+
+	toggleMenu() {
+		this.setState({
+			active: !this.state.active
+		});
 	}
 }
 

@@ -20,13 +20,20 @@ class Menu extends React.Component {
 		MenuStore.unlisten(this.onChange.bind(this));
 	}
 
+	componentWillUpdate(nextProps, nextState) {
+		let aside = document.querySelector('.App__aside');
+		let asideActiveClassName = 'App__aside--active';
+
+		nextState.active ? aside.classList.add(asideActiveClassName) : aside.classList.remove(asideActiveClassName);
+	}
+
 	onChange(state) {
 		this.setState(state);
 	}
 
 	render() {
 		let menu = this.state.menu;
-		
+
 		return (
 			<div>
 				<SubredditSearch />

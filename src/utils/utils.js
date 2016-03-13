@@ -39,9 +39,7 @@ const utils = {
   scrollTop: (element, value) => {
     if (element && value >= 0) {
       let el = document.querySelector(element);
-      if (el) {
-        el.scrollTop = value;
-      }
+      if (el) el.scrollTop = value;
     }
   }
 };

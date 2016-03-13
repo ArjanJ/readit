@@ -8,7 +8,7 @@ class PostListActions {
 		return new Promise((resolve, response) => {
 			api.getData({ url: '/subreddits/default/.json' })
 				.then((response) => {
-					this.fetchMenuSuccess(response);
+					response !== null ? this.fetchMenuSuccess(response) : this.fetchMenuFailed(response);
 					resolve(response);
 				});
 			});
@@ -20,6 +20,14 @@ class PostListActions {
 
 	fetchMenuFailed(response) {
 		return response;
+	}
+
+	toggleMenu() {
+
+		// Nothing is needed to be returned here because the Menu is toggled
+		// with a boolean which gets toggled in the MenuStore
+		// upon the setState method.
+		return true;
 	}
 }
 

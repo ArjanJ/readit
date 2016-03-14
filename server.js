@@ -8,6 +8,8 @@ const path            = require('path');
 const passport        = require('passport');
 const crypto          = require('crypto');
 const RedditStrategy  = require('passport-reddit').Strategy;
+const favicon 				= require('serve-favicon');
+
 
 const isDeveloping    = process.env.NODE_ENV !== 'production';
 
@@ -29,6 +31,7 @@ app.use(session({
 app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(favicon(__dirname + '/dist/favicon/favicon.ico'));
 
 passport.serializeUser(function(user, done) {
 	done(null, user);

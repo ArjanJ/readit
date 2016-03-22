@@ -29,9 +29,9 @@ class MenuStore {
 		console.log(response);
 	}
 
-	toggleMenu() {
+	toggleMenu(toggle) {
 		this.setState({
-			active: !this.state.active
+			active: toggle
 		});
 	}
 }

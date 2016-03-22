@@ -4,7 +4,12 @@ import MenuActions from '../../actions/MenuActions';
 class Hamburger extends React.Component {
 
 	toggleSidebar() {
-		MenuActions.toggleMenu();
+		let aside = document.querySelector('.App__aside');
+		let asideActiveClassName = 'App__aside--active';
+
+		let toggle = aside.classList.contains(asideActiveClassName) ? false : true;
+
+		 MenuActions.toggleMenu(toggle);
 	}
 
 	render() {

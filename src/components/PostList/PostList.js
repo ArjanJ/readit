@@ -4,7 +4,6 @@ import PostListActions from '../../actions/PostListActions';
 import PostListStore from '../../stores/PostListStore';
 import PostListItem from '../PostListItem/PostListItem';
 import PostListNav from '../PostListNav/PostListNav';
-import MenuActions from '../../actions/MenuActions';
 import Filters from '../Filters/Filters';
 import utils from '../../utils/utils';
 
@@ -32,9 +31,6 @@ class PostList extends React.Component {
 
 		// Fetch new posts
 		PostListActions.fetchPosts(this.getPostListParams(nextProps.params));
-
-		// Close Menu if open
-		MenuActions.toggleMenu();
 
 		// Scroll to top of the page
 		utils.scrollTop('.App__content', 0);

@@ -26,12 +26,10 @@ class PostListActions {
 		return response;
 	}
 
-	toggleMenu() {
+	toggleMenu(toggle) {
 
-		// Nothing is needed to be returned here because the Menu is toggled
-		// with a boolean which gets toggled in the MenuStore
-		// upon the setState method.
-		return true;
+		// Returns a boolean, if true open the menu, if false close it.
+		return toggle;
 	}
 }
 

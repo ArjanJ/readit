@@ -1,5 +1,7 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
+import MenuActions from '../../actions/MenuActions';
+
 
 class SubredditSearch extends React.Component {
 
@@ -11,6 +13,8 @@ class SubredditSearch extends React.Component {
 		if (subreddit) browserHistory.push(`/r/${subreddit}`);
 
 		this.refs.subredditSearchForm.reset();
+
+		MenuActions.toggleMenu(false);
 	}
 
 	render() {

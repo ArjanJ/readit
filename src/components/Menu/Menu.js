@@ -31,6 +31,10 @@ class Menu extends React.Component {
 		this.setState(state);
 	}
 
+	onLinkClick() {
+		MenuActions.toggleMenu(false);
+	}
+
 	render() {
 		let menu = this.state.menu;
 
@@ -38,11 +42,11 @@ class Menu extends React.Component {
 			<div>
 				<SubredditSearch />
 				<nav className="Menu">
-					<Link key={0} to={'/'} className="Menu__link">Front</Link>
-					<Link key={1} to={'/r/All'} className="Menu__link">All</Link>
+					<Link key={0} to={'/'} onClick={this.onLinkClick.bind(this)} className="Menu__link">Front</Link>
+					<Link key={1} to={'/r/All'} onClick={this.onLinkClick.bind(this)}  className="Menu__link">All</Link>
 					{Object.keys(menu).map((key) => {
 						return (
-							<Link key={menu[key].data.id} to={`/r/${menu[key].data.display_name}`} className="Menu__link">{menu[key].data.display_name}</Link>
+							<Link key={menu[key].data.id} to={`/r/${menu[key].data.display_name}`} onClick={this.onLinkClick.bind(this)}  className="Menu__link">{menu[key].data.display_name}</Link>
 						)
 					})}
 				</nav>

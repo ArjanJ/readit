@@ -4,9 +4,14 @@
 	overflow: hidden;
 	background: color(white);
 
+	&__content,
+	&__aside {
+		overflow-y: scroll;
+		-webkit-overflow-scrolling: touch;
+	}
+
 	&__content {
 		flex: 1;
-		overflow-y: scroll;
 		position: relative;
 		background: color(white);
 	}
@@ -17,8 +22,7 @@
 		right: 0;
 		height: 100%;
 		width: 100%;
-		padding: ($base-space) ($base-space * 2);
-		overflow-y: scroll;
+		padding: ($base-space);
 		background: white;
 		@include ease();
 		will-change: transform;
@@ -32,6 +36,13 @@
 	}
 
 	@include bp(medium) {
+
+		&__aside {
+			padding: ($base-space) ($base-space * 2);
+		}
+	}
+
+	@include bp(large) {
 
 		&__aside {
 			position: static;

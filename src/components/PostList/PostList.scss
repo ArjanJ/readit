@@ -11,11 +11,10 @@
 	}
 
 	&--loading {
-		opacity: 0;
-	}
 
-	&--loaded {
-		opacity: 1;
+		#{$p}__list {
+			opacity: 0;
+		}
 	}
 
 	&__wrapper {
@@ -40,6 +39,7 @@
 	&__list {
 		list-style-type: none;
 		margin: 0 0 $base-space * 2;
+		@include ease();
 	}
 
 	&__item {

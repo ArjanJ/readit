@@ -1,7 +1,11 @@
 .Thread {
-	padding: ($base-space * 3) ($base-space * 2);
+	padding: ($base-space * 2) ($base-space);
 	opacity: 1;
 	@include ease();
+
+	@include bp(medium) {
+		padding: ($base-space * 3) ($base-space * 2);
+	}
 
 	&--loading {
 		opacity: 0;
@@ -23,7 +27,7 @@
 
 		@include bp(medium) {
 			@extend %u-heading-2;
-			letter-spacing: (-$base-space / 8);
+			letter-spacing: (-$base-space / 12);
 		}
 	}
 

@@ -2,6 +2,11 @@
 	display: flex;
 	font-weight: 700;
 
+	span,
+	&__input {
+		font-size: map-get($heading-sizes, 5);
+	}
+
 	&__input {
 		width: auto;
 		border: none;
@@ -14,6 +19,14 @@
 		&:active {
 			box-shadow: none;
 			outline: none;
+		}
+	}
+
+	@include bp(large) {
+
+		span,
+		&__input {
+			font-size: map-get($heading-sizes, 6);
 		}
 	}
 }

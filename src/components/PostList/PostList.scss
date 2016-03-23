@@ -48,7 +48,6 @@
 
 	&__link {
 		display: flex;
-		padding-bottom: ($base-space / 3);
 		font-size: map-get($heading-sizes, 6);
 		font-weight: 700;
 		line-height: $line-height-headings;
@@ -110,5 +109,21 @@
 
 	&__filters {
 		margin-bottom: ($base-space * 2);
+	}
+
+	&__sr {
+		display: block;
+		color: color(black);
+		margin-left: 50px;
+		margin-bottom: ($base-space / 2);
+		font-weight: 400;
+
+		&:first-letter {
+			color: color(red);
+		}
+
+		@include bp(medium) {
+			margin-left: 65px;
+		}
 	}
 }

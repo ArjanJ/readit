@@ -12,6 +12,7 @@ class PostListItem extends React.Component {
 					<span className="PostList__score">{item.data.score}</span>
 					<span className="PostList__link-text">{item.data.title}</span>
 				</Link>
+				<Link to={`/r/${item.data.subreddit}`} className="PostList__sr"><small>/r/{item.data.subreddit}</small></Link>
 				<Link to={item.data.permalink} className="PostList__button">View comments</Link>
 			</li>
 		)

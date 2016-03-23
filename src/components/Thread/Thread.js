@@ -60,6 +60,12 @@ class Thread extends React.Component {
 					<ReactMarkdown source={this.state.post.selftext} />
 				</div>
 			)
+		} else if (this.state.post.url) {
+			return (
+				<div className="Thread__self-text">
+					<a href={this.state.post.url} target="_blank">{this.state.post.url}</a>
+				</div>
+			)
 		} else {
 			return false;
 		}
